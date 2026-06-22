@@ -64,34 +64,36 @@ function initReveal() {
 }
 
 /* ─── Price animation ───────────────────
-   Quando o value stack entra na viewport:
-   1. anima o strikethrough no R$382
-   2. revela o R$19,90 com scale+fade
+   1. Quando value stack entra: strikethrough no R$382
+   2. Quando offer box entra: revela o R$19,90
 ──────────────────────────────────────── */
 function initPriceAnimation() {
+  /* strikethrough no total */
   const stack = document.getElementById('valueStack');
-  if (!stack) return;
+  if (stack) {
+    const obs1 = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      obs1.disconnect();
+      const old = document.getElementById('priceOld');
+      if (old) setTimeout(() => old.classList.add('strike'), prefersReduced ? 0 : 250);
+    }, { threshold: 0.4 });
+    obs1.observe(stack);
+  }
 
-  const obs = new IntersectionObserver((entries) => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-
-    const old   = document.getElementById('priceOld');
-    const final = document.getElementById('priceFinal');
-
-    if (old) {
-      setTimeout(() => old.classList.add('strike'), prefersReduced ? 0 : 250);
-    }
-    if (final) {
+  /* reveal do preço final */
+  const final = document.getElementById('priceFinal');
+  if (final) {
+    const obs2 = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      obs2.disconnect();
       if (prefersReduced) {
         final.classList.add('reveal');
       } else {
-        setTimeout(() => final.classList.add('reveal'), 950);
+        setTimeout(() => final.classList.add('reveal'), 400);
       }
-    }
-  }, { threshold: 0.35 });
-
-  obs.observe(stack);
+    }, { threshold: 0.3 });
+    obs2.observe(final);
+  }
 }
 
 /* ─── FAQ accordion ─────────────────── */
