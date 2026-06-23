@@ -1016,6 +1016,178 @@ section { padding: 72px 0; }
 .footer p + p { margin-top: 6px; }
 
 /* ═══════════════════════════════════
+   ACESSO IMEDIATO
+═══════════════════════════════════ */
+.instant-access .section-title { margin-bottom: 2.5rem; }
+
+.access-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .access-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.access-card {
+  background: var(--dark-2);
+  border-radius: var(--r);
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: box-shadow var(--t), transform var(--t);
+}
+
+.access-card:hover {
+  box-shadow: 0 6px 28px rgba(247,255,0,0.1);
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .access-card:hover { transform: none; }
+}
+
+.access-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: rgba(247,255,0,0.08);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  color: var(--yellow);
+}
+
+.access-card h3 {
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--yellow);
+  margin-bottom: 10px;
+}
+
+.access-card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════
+   DOIS CAMINHOS
+═══════════════════════════════════ */
+.two-paths { padding-bottom: 72px; padding-top: 0; }
+
+.paths-header {
+  background: var(--dark-3);
+  padding: 36px 20px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.paths-title {
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.paths-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+@media (min-width: 640px) {
+  .paths-cards { grid-template-columns: 1fr 1fr; }
+}
+
+.path-card {
+  border-radius: var(--r);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  background: var(--dark-alt);
+}
+
+.path-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.path-emoji { font-size: 2rem; line-height: 1; }
+
+.path-badge {
+  display: inline-block;
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: 0.75rem;
+  padding: 4px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+.badge-bad {
+  background: rgba(255, 80, 40, 0.15);
+  color: #FF6B4A;
+  border: 1px solid rgba(255, 80, 40, 0.3);
+}
+
+.badge-good {
+  background: rgba(247, 255, 0, 0.12);
+  color: var(--yellow);
+  border: 1px solid rgba(247, 255, 0, 0.3);
+}
+
+.path-bad  { border-color: rgba(255, 80, 40, 0.2); }
+.path-good { border-color: rgba(247, 255, 0, 0.25); }
+
+.path-card-title {
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.path-bad  .path-card-title { color: #FF6B4A; }
+.path-good .path-card-title { color: var(--yellow); }
+
+.path-card-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.paths-conclusion {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.paths-concl-title {
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.paths-concl-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.paths-concl-sub strong { color: var(--white); }
+
+/* ═══════════════════════════════════
    STICKY BAR (mobile only)
 ═══════════════════════════════════ */
 .sticky-bar {
