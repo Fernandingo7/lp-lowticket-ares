@@ -443,38 +443,86 @@ section { padding: 72px 0; }
   opacity: 0.9;
 }
 
-/* Vertical stacked steps */
-.steps-v {
+/* Horizontal steps — 3 cards + arrows */
+.steps-h {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 560px;
+  align-items: center;
+  gap: 16px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
-.step-v {
-  border: 1px solid var(--border);
-  border-radius: var(--r-s);
-  overflow: hidden;
+@media (min-width: 640px) {
+  .steps-h {
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
 
-.step-v-head {
-  background: rgba(247,255,0,0.06);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 20px;
+.step-h {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px 20px;
+  transition: box-shadow var(--t), border-color var(--t);
+}
+
+.step-h:hover {
+  border-color: var(--border-y);
+  box-shadow: 0 4px 20px rgba(247,255,0,0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-h:hover { box-shadow: none; }
+}
+
+.step-h-num {
+  display: inline-block;
+  background: rgba(247,255,0,0.1);
+  color: var(--yellow);
+  border: 1px solid rgba(247,255,0,0.25);
+  font-family: var(--font-h);
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 100px;
+}
+
+.step-h-emoji {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.step-h-title {
   font-family: var(--font-h);
   font-weight: 900;
   font-size: 1rem;
-  color: var(--yellow);
+  color: var(--white);
+  line-height: 1.35;
 }
 
-.step-v-body {
-  padding: 14px 20px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.6;
+.step-arrow-h {
+  font-size: 1.5rem;
+  color: var(--yellow);
+  font-weight: 900;
+  flex-shrink: 0;
+  align-self: center;
+  transform: rotate(90deg);
+  opacity: 0.7;
 }
-.step-v-body strong { color: var(--white); }
+
+@media (min-width: 640px) {
+  .step-arrow-h { transform: rotate(0deg); }
+}
 
 /* ═══════════════════════════════════
    FRAMEWORKS — horizontal 2×2 grid
