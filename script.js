@@ -76,6 +76,9 @@ function initPriceAnimation() {
       obs1.disconnect();
       const old = document.getElementById('priceOld');
       if (old) setTimeout(() => old.classList.add('strike'), prefersReduced ? 0 : 250);
+      /* also strike vsu-total-price if present */
+      const oldVsu = document.querySelector('.vsu-total-price');
+      if (oldVsu) setTimeout(() => oldVsu.classList.add('strike'), prefersReduced ? 0 : 250);
     }, { threshold: 0.4 });
     obs1.observe(stack);
   }
@@ -86,11 +89,7 @@ function initPriceAnimation() {
     const obs2 = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) return;
       obs2.disconnect();
-      if (prefersReduced) {
-        final.classList.add('reveal');
-      } else {
-        setTimeout(() => final.classList.add('reveal'), 400);
-      }
+      setTimeout(() => final.classList.add('reveal'), prefersReduced ? 0 : 400);
     }, { threshold: 0.3 });
     obs2.observe(final);
   }
